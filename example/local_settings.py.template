@@ -1,0 +1,53 @@
+import logging
+import os
+
+DEBUG = True
+
+#
+# Secret Key Configuration
+#
+
+# SECRET_KEY = '$w4kg3+b1nm69bya+un7si^3e)c_e410+ua82!pta(s@-8^730'
+
+#
+# Database Configuration
+#
+
+MONGODB_NAME      = 'mixtape'
+MONGODB_OPTIONS   = { }
+
+#
+# Logging Configuration
+#
+
+# LOG_ENABLED  = True
+# LOG_LEVEL    = logging.DEBUG
+# LOG_FORMAT   = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+# LOG_FILE     = sys.stderr
+
+#
+# System Settings
+#
+
+MIXTAPE_BASE_DIR  = '#SET_ME#'
+
+CACHE_BACKEND     = 'file://%s?timeout=600' % os.path.join(MIXTAPE_BASE_DIR, 'cache')
+
+LOCK_DIR          = os.path.join(MIXTAPE_BASE_DIR, 'locks')
+
+SESSION_ENGINE    = 'django.contrib.sessions.backends.file'
+SESSION_FILE_PATH = os.path.join(MIXTAPE_BASE_DIR, 'sessions')
+
+#
+# Static Media Settings
+#
+
+STATIC_BASE_DIR = os.path.join(MIXTAPE_BASE_DIR, 'static')
+
+#
+# Connect to the Database
+#
+
+import mongoengine
+
+mongoengine.connect(MONGODB_NAME, **MONGODB_OPTIONS)
