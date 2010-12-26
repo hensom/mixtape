@@ -1,0 +1,26 @@
+{% extends "mixtape_main/base.html" %}
+
+{% block content %}
+<section class="playlist">
+	<h1>{{ source.name }}: <span>{{ configuration }}</span></h1>
+	
+	{% if playlist.last_sync_date %}
+	<time>Last Updated: {{ playlist.last_sync_date|timesince }} ago</time>
+	{% endif %}
+
+	<ul class="formats">
+	{% for serializer in serializers %}
+	<li><a href="{% url playlist-serialize playlist_id=playlist.id, format=serializer.id %}">{{ serializer.name }}</a></li>
+	{% endfor %}
+	</ul>
+	
+	<ul class="tracks">
+	{% for track in playlist.tracks %}
+	<li><a href="{{ track.url }}">{{ track.display_title }}</a></li>
+	{% empty %}
+	<li>No Tracks Found</li>
+	{% endfor %}
+	</ul>
+</section>
+
+{% endblock %}

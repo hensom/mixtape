@@ -1,0 +1,102 @@
+html {
+  font-size:   12px;
+  line-height: 1.3em;
+  background-color: white;
+  color:            black;
+}
+
+* {
+  margin:  0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 1.5em;
+  padding-top:    0.2em;
+  padding-bottom: 0.5em;
+}
+
+h1 span {
+  font-weight: normal;
+  color: #666;
+}
+
+a {
+  color: #009;
+}
+
+#content {
+  margin-top: 200px; 
+}
+
+#content > section {
+  width:  400px;
+  margin: 0px auto;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  -webkit-box-shadow: 2px 2px 2px #ddd;
+}
+
+section ul {
+  margin: 0px 20px;
+}
+
+li {
+  list-style: none;
+}
+
+.playlist h2 {
+  text-align:  left;
+  font-weight: normal;
+  font-size:   14px;
+  margin-left: 20px;
+}
+
+.playlist .formats li {
+  display: inline;
+}
+
+.playlist .tracks {
+  margin-top:   10px;
+}
+
+.playlist {
+  position: relative;
+}
+
+.playlist time {
+  position: absolute;
+  right:    0px;
+  bottom:   -20px;
+  font-size: 10px;
+  color:     #999;
+}
+
+.preview input {
+  line-height: 2em;
+}
+
+.preview input[type="text"] {
+  width: 300px;
+}
+
+.preview input[type="submit"] {
+  width: 90px;
+}
+
+.preview label {
+  display: none;
+}
+
+.preview ul {
+  margin-top:    10px;
+  margin-bottom: 10px;
+  border-top:    1px solid #ccc;
+}
+
+.preview li {
+  padding-top:    0.3em;
+  padding-bottom: 0.3em;
+  border-bottom:  1px solid #ccc;
+}

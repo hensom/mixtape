@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+{% load mixtape_resources %}
+
+<html lang="en">
+  <head>
+	{% block head %}
+    <title>
+			  {% block title %}Mixtape{% endblock %}
+		</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="{% css_url "styles.css" %}" type="text/css" />
+	{% endblock %}
+  </head>
+  <body>
+		<div id="content">
+  	{% block content %}{% endblock %}
+		</div>
+  </body>
+</html>

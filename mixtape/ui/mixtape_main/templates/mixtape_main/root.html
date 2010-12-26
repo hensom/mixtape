@@ -1,0 +1,24 @@
+{% extends "mixtape_main/base.html" %}
+
+{% block content %}
+  {% for source in sources %}
+  <section class="preview">
+	  <h1>{{ source.source.name }}</h1>
+	  <form method="GET" action="{% url preview source_id=source.source.id %}">
+		  {{ source.form }}
+		
+		  <input type="submit" value="Preview" />
+		</form>
+	</section>
+	
+	<section>
+		<h1>All Playlists</h1>
+
+		<ul>
+		{% for playlist in playlists %}
+		<li><a href="{% url playlist-view playlist_id=playlist.playlist.id %}">{{ playlist.source.name }}: {{ playlist.configuration }}</a></li>
+		{% endfor %}
+		</ul>
+	</section>
+  {% endfor %}
+{% endblock %}

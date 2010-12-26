@@ -1,0 +1,29 @@
+{% extends "mixtape_main/base.html" %}
+
+{% block content %}
+  <section class="preview">
+	  <h1>{{ source.name }}</h1>
+
+	  <form method="GET">
+		  {{ form }}
+		
+		  <input type="submit" value="Preview" />
+		</form>
+		
+		<ul>
+		{% for preview in previews %}
+		  <li>{{ preview }}</li>
+		{% empty %}
+		  <li>No Tracks Found</li>
+		{% endfor %}
+		</ul>
+		
+		{% if form.is_valid %}
+		<form method="POST" action="{% url new source_id=source.id %}">
+			{{ form }}
+			
+			<input type="submit" value="Create Playlist" />
+		</form>
+		{% endif %}
+	</section>
+{% endblock %}
