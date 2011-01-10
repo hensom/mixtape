@@ -6,7 +6,7 @@ from mongoengine          import DictField, BooleanField, URLField
 from mongoengine          import EmbeddedDocumentField, ObjectIdField, StringField
 from mongoengine.base     import ValidationError
 
-logger = logging.getLogger(__name__)
+LOG = logging.getLogger(__name__)
 
 class Track(EmbeddedDocument):
   artist        = StringField()

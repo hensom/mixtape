@@ -15,7 +15,7 @@ TEXT_LINK = re.compile('(?P<url>http[s]?:\/\/[^\s]+)', re.I)
 
 PLAYLIST_SOURCES = { }
 
-logger = logging.getLogger(__name__)
+LOG = logging.getLogger(__name__)
 
 def register_source(source_class):
   if source_class.id() in PLAYLIST_SOURCES:
@@ -111,7 +111,7 @@ class PlaylistSync(object):
         f      = self.download_url(url)
         parser = guessParser(InputIOStream(f))
       except Exception, e:
-        logger.exception('Unable to handle url: %s' % url)
+        LOG.exception('Unable to handle url: %s' % url)
 
         continue
 

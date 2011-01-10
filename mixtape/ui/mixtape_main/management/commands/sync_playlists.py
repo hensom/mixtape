@@ -7,7 +7,7 @@ from django.core.management.base import BaseCommand
 from mixtape.sources             import PlaylistSync
 from mixtape.models              import Playlist
 
-logger = logging.getLogger(__name__)
+LOG = logging.getLogger(__name__)
 
 class Command(BaseCommand):
     def handle(self, *args, **options):  
@@ -29,7 +29,7 @@ class Command(BaseCommand):
           try:
             manager.sync(playlist)
           except:
-            logger.exception('Unable to sync playlist: %s' % playlist.id)
+            LOG.exception('Unable to sync playlist: %s' % playlist.id)
             
             
       flock(lock, LOCK_UN)
