@@ -1,10 +1,8 @@
 import                           logging
-from datetime             import datetime, timedelta
+from datetime             import datetime
 from mongoengine          import Document, EmbeddedDocument
-from mongoengine          import IntField, FloatField, DateTimeField, ListField
-from mongoengine          import DictField, BooleanField, URLField
-from mongoengine          import EmbeddedDocumentField, ObjectIdField, StringField
-from mongoengine.base     import ValidationError
+from mongoengine          import IntField, DateTimeField, ListField
+from mongoengine          import EmbeddedDocumentField, StringField
 
 LOG = logging.getLogger(__name__)
 

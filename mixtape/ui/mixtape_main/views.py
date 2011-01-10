@@ -1,6 +1,3 @@
-import urllib2
-
-from datetime                     import datetime
 from django.core.urlresolvers     import reverse
 from django.http                  import HttpResponseRedirect, HttpResponse
 from django.shortcuts             import render_to_response

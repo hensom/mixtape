@@ -6,7 +6,6 @@ from django         import forms
 from tempfile       import SpooledTemporaryFile
 from mixtape        import models
 
-from hachoir_core.error  import HachoirError
 from hachoir_parser      import guessParser
 from hachoir_metadata    import extractMetadata
 from hachoir_core.stream import InputIOStream
