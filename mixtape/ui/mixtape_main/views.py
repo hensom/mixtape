@@ -82,8 +82,8 @@ def playlist_view(request, playlist_id):
   
   return render_to_response('mixtape_main/playlist_view.html', context)
 
-def playlist_serialize(request, playlist_id, format):
+def playlist_serialize(request, playlist_id, file_format):
   playlist   = get_document_or_404(Playlist, id = playlist_id)
-  serializer = serializers.serializer_with_id(format)(playlist.tracks)
+  serializer = serializers.serializer_with_id(file_format)(playlist.tracks)
   
   return HttpResponse(serializer, mimetype = serializer.mimetype())

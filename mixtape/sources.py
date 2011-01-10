@@ -37,10 +37,8 @@ class Track(object):
   @classmethod
   def urls_from_text(cls, text):
     urls = []
-    
     for match in TEXT_LINK.finditer(text):
       urls.append(match.group('url'))
-
     return urls
     
 class PlaylistConfigurationForm(forms.Form):
@@ -75,7 +73,6 @@ class PlaylistSource(object):
 class PlaylistSync(object):    
   def sync(self, playlist):
     source      = source_with_id(playlist.source_id)
-
     prev_tracks = dict((t.reference_key, t) for t in playlist.tracks)
     track_list  = []
 
@@ -90,16 +87,12 @@ class PlaylistSync(object):
 
     playlist.tracks = track_list
     playlist.last_sync_date = datetime.now()
-    
     playlist.save()
         
   def download_url(self, url):
-    f = urllib2.urlopen(url)
-
+    f   = urllib2.urlopen(url)
     tmp = SpooledTemporaryFile()
-    
     tmp.writelines(f)
-      
     return tmp
     
   def get_track(self, track):
@@ -111,18 +104,14 @@ class PlaylistSync(object):
         parser = guessParser(InputIOStream(f))
       except Exception, e:
         LOG.exception('Unable to handle url: %s' % url)
-
         continue
 
       if parser:
-        metadata = extractMetadata(parser)
-    
+        metadata  = extractMetadata(parser)
         new_track = models.Track(reference_key = track.reference_key, url = url)
-    
         new_track.title    = metadata.get('title')
         new_track.artist   = metadata.get('author')
         new_track.duration = 24 * 60 * 60 * metadata.get('duration').days + metadata.get('duration').seconds
-
         return new_track
 
     return None

@@ -25,14 +25,11 @@ class TwitterPlaylistSource(PlaylistSource):
   @classmethod
   def configuration_form(cls, configuration = None, **form_args):
     initial = { }
-
     if configuration:
       initial['query'] = configuration['query']
       
     form_args = form_args.copy()
-    
     form_args['initial'] = initial
-
     return TwitterConfigurationForm(**form_args)
 
   @classmethod
@@ -42,15 +39,12 @@ class TwitterPlaylistSource(PlaylistSource):
   @classmethod
   def _track_from_result(cls, result):
     urls = Track.urls_from_text(result.text)
-
     return Track(reference_key = str(result.id), object = result, urls = urls)
 
   @classmethod
   def tracks(cls, configuration, number = 10):
     api = Api()
-    
     results = api.GetSearch(configuration.query, per_page = number)
-
     return [cls._track_from_result(r) for r in results]
     
   @classmethod
